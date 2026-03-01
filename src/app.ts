@@ -43,6 +43,79 @@ import { route } from '@aurelia/router';
             component: import('./pages/affixes/affixes'),
             title: 'Affixes',
         },
+        // Wiki: Classes
+        {
+            path: 'classes',
+            component: import('./pages/wiki/classes/wiki-classes'),
+            title: 'Classes',
+        },
+        {
+            path: 'classes/:class',
+            component: import('./pages/wiki/classes/wiki-class-detail'),
+            title: 'Class Detail',
+        },
+        // Wiki: Builds
+        {
+            path: 'builds',
+            component: import('./pages/wiki/builds/wiki-builds'),
+            title: 'Builds',
+        },
+        {
+            path: 'builds/:class/:build',
+            component: import('./pages/wiki/builds/wiki-build-detail'),
+            title: 'Build Detail',
+        },
+        // Wiki: Items
+        {
+            path: 'wiki-items',
+            component: import('./pages/wiki/items/wiki-items'),
+            title: 'Wiki Items',
+        },
+        {
+            path: 'wiki-items/:item',
+            component: import('./pages/wiki/items/wiki-item-detail'),
+            title: 'Wiki Item Detail',
+        },
+        // Wiki: Guides
+        {
+            path: 'guides/:guide',
+            component: import('./pages/wiki/guides/wiki-guide'),
+            title: 'Guide',
+        },
+        // Wiki: Patch Notes
+        {
+            path: 'patch-notes',
+            component: import('./pages/wiki/patch-notes/wiki-patch-notes'),
+            title: 'Patch Notes',
+        },
+        {
+            path: 'patch-notes/:version',
+            component: import('./pages/wiki/patch-notes/wiki-patch-note-detail'),
+            title: 'Patch Note Detail',
+        },
+        // Wiki: Area Levels
+        {
+            path: 'area-levels',
+            component: import('./pages/wiki/area-levels/wiki-area-levels'),
+            title: 'Area Levels',
+        },
+        // Wiki: Hirelings
+        {
+            path: 'hirelings',
+            component: import('./pages/wiki/hirelings/wiki-hirelings'),
+            title: 'Hirelings',
+        },
+        // Wiki: Recipes
+        {
+            path: 'recipes',
+            component: import('./pages/wiki/recipes/wiki-recipes'),
+            title: 'Recipes',
+        },
+        {
+            path: 'recipes/:recipe',
+            component: import('./pages/wiki/recipes/wiki-recipe-detail'),
+            title: 'Recipe Detail',
+        },
     ],
 })
 export class App {
@@ -51,6 +124,9 @@ export class App {
         { class: 'font-resurrected', name: 'Resurrected' },
         { class: 'font-neutral', name: 'Neutral' },
     ];
+
+    // UI state for wiki sidebar visibility
+    sidebarOpen = false;
 
     // UI state for back-to-top visibility
     showBackToTop = false;
@@ -102,6 +178,17 @@ export class App {
                 const clickOnToggle = !!(target && toggle && toggle.contains(target));
                 if (!clickInsidePanel && !clickOnToggle) {
                     this.closeMobileMenu();
+                }
+            }
+
+            // 3) Close the wiki sidebar when clicking outside
+            if (this.sidebarOpen) {
+                const sidebar = document.getElementById('wiki-sidebar');
+                const sidebarBtn = document.querySelector('button[aria-controls="wiki-sidebar"]');
+                const clickInsideSidebar = !!(target && sidebar && sidebar.contains(target));
+                const clickOnSidebarBtn = !!(target && sidebarBtn && sidebarBtn.contains(target));
+                if (!clickInsideSidebar && !clickOnSidebarBtn) {
+                    this.closeSidebar();
                 }
             }
         };
@@ -177,6 +264,15 @@ export class App {
         if (toggle) {
             toggle.setAttribute('aria-expanded', 'false');
         }
+    }
+
+    toggleSidebar() {
+        this.sidebarOpen = !this.sidebarOpen;
+        this.closeMobileMenu();
+    }
+
+    closeSidebar() {
+        this.sidebarOpen = false;
     }
 
     loadFont() {

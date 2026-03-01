@@ -1,0 +1,4 @@
+{
+  "title": "Hirelings",
+  "content": "<ul>\n  <li>All hireling types skills can be purchased in any difficulty.</li>\n  <li>Hirelings can be rerolled by making a new game.</li>\n</ul>\n<p>&nbsp;</p>\n<h6>Act 1 Rogue</h6>\n<ul>\n  <li>Can equip quivers</li>\n  <li>Can equip crossbows</li>\n</ul>\n<p>&nbsp;</p>\n<h6>Act 2 Desert Mercenary</h6>\n<ul>\n  <li>Unchanged</li>\n</ul>\n<p>&nbsp;</p>\n<h6>Act 3 Iron Wolf</h6>\n<ul>\n  <li>Unchanged</li>\n</ul>\n<p>&nbsp;</p>\n<h6>Act 5 - 2 Handed</h6>\n<ul>\n  <li>Stun is now Tectonic Slam</li>\n  <li>AI Changed to prefer Tectonic Slam over Bash</li>\n  <li>Can equip 2 handed swords, axes, maces, hammers, staves, and pole-arms (essentially “Slam” weapons)</li>\n</ul>\n<p>&nbsp;</p>\n<h6>Act 5 - Frenzy</h6>\n<ul>\n  <li>Can only equip 1 handed weapons, even swords, but can dual-wield</li>\n  <li>Can equip every 1 handed weapon type except for wands and Sorceress orbs</li>\n</ul>\n"
+}

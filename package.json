@@ -11,6 +11,7 @@
         "@tailwindcss/vite": "^4.1.18",
         "aurelia": "2.0.0-beta.25",
         "flowbite": "^2.5.2",
+        "marked": "^17.0.3",
         "tailwindcss": "^4.1.18"
     },
     "type": "module",
@@ -48,7 +49,8 @@
         "vite-plugin-static-copy": "^1.0.6"
     },
     "scripts": {
-        "build": "rimraf docs/assets && vite build && cp docs/index.html docs/404.html",
+        "parse-wiki": "node scripts/parse-wiki-content.mjs",
+        "build": "pnpm run parse-wiki && rimraf docs/assets && vite build && cp docs/index.html docs/404.html",
         "dependencies:check": "pnpm dlx npm-check-updates",
         "dependencies:update": "pnpm dlx npm-check-updates -u",
         "dependencies:update:patch": "pnpm dlx npm-check-updates -u --target patch",

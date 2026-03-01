@@ -1,0 +1,10 @@
+<template>
+    <wiki-content if.bind="page"
+                  title.bind="page.title"
+                  content.bind="page.content">
+    </wiki-content>
+    <div if.bind="!page" class="container mx-auto mt-5 max-w-5xl p-5 text-center">
+        <p class="text-lg base-text">Patch notes not found.</p>
+        <a href="/patch-notes" class="link-text underline">Back to Patch Notes</a>
+    </div>
+</template>

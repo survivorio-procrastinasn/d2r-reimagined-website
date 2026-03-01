@@ -62,6 +62,15 @@
              id="navbar-sticky">
             <ul class="flex flex-col gap-4 p-4 border border-gray-600 bg-gray-800 rounded-b-lg lg:flex-row lg:gap-6 lg:p-0 lg:border-0 lg:bg-transparent">
                 <li>
+                    <button type="button"
+                            class="flex text-lg link-text items-center"
+                            aria-controls="wiki-sidebar"
+                            aria-expanded.bind="sidebarOpen.toString()"
+                            click.trigger="toggleSidebar()">
+                        Info<span class="mso ml-1">menu_book</span>
+                    </button>
+                </li>
+                <li>
                     <a href="/bases" class="block text-lg link-text" aria-current="page"
                        click.trigger="closeMobileMenu()">Bases</a>
                 </li>
@@ -89,17 +98,112 @@
                     <a href="/cube-recipes" class="block text-lg link-text truncate" aria-current="page"
                        click.trigger="closeMobileMenu()">Cube Recipes</a>
                 </li>
-                <li>
-                    <a href="https://wiki.d2r-reimagined.com/" target="_blank"
-                       class="flex text-lg link-text items-center" aria-current="page"
-                       click.trigger="closeMobileMenu()">Wiki<span class="mso ml-1">open_in_new</span>
-                    </a>
-                </li>
             </ul>
         </div>
 
     </div>
 </nav>
+
+<!-- Wiki Sidebar Overlay -->
+<div if.bind="sidebarOpen"
+     class="fixed inset-0 bg-black/50 z-30"
+     click.trigger="closeSidebar()">
+</div>
+
+<!-- Wiki Sidebar Drawer -->
+<div id="wiki-sidebar"
+     class="fixed top-0 left-0 h-full w-80 max-w-[85vw] z-40 bg-gray-900 border-r border-gray-600 shadow-xl
+            overflow-y-auto"
+     style="transform: translateX(${sidebarOpen ? '0' : '-100%'}); transition: transform 0.2s ease-in-out;">
+
+    <div class="flex items-center justify-between p-4 border-b border-gray-600">
+        <span class="text-xl unique-text">Wiki</span>
+        <button type="button" class="text-2xl link-text" click.trigger="closeSidebar()">
+            <span class="mso">close</span>
+        </button>
+    </div>
+
+    <nav class="p-4 space-y-4">
+        <!-- Classes -->
+        <div>
+            <h3 class="text-sm uppercase base-text tracking-wider mb-2">Classes</h3>
+            <ul class="space-y-1 ml-2">
+                <li><a href="/classes" class="block py-1 link-text" click.trigger="closeSidebar()">Overview</a></li>
+                <li><a href="/classes/amazon" class="block py-1 link-text" click.trigger="closeSidebar()">Amazon</a></li>
+                <li><a href="/classes/assassin" class="block py-1 link-text" click.trigger="closeSidebar()">Assassin</a></li>
+                <li><a href="/classes/barbarian" class="block py-1 link-text" click.trigger="closeSidebar()">Barbarian</a></li>
+                <li><a href="/classes/druid" class="block py-1 link-text" click.trigger="closeSidebar()">Druid</a></li>
+                <li><a href="/classes/necromancer" class="block py-1 link-text" click.trigger="closeSidebar()">Necromancer</a></li>
+                <li><a href="/classes/paladin" class="block py-1 link-text" click.trigger="closeSidebar()">Paladin</a></li>
+                <li><a href="/classes/sorceress" class="block py-1 link-text" click.trigger="closeSidebar()">Sorceress</a></li>
+            </ul>
+        </div>
+
+        <!-- Builds -->
+        <div>
+            <h3 class="text-sm uppercase base-text tracking-wider mb-2">Builds</h3>
+            <ul class="space-y-1 ml-2">
+                <li><a href="/builds" class="block py-1 link-text" click.trigger="closeSidebar()">All Builds</a></li>
+            </ul>
+        </div>
+
+        <!-- Items -->
+        <div>
+            <h3 class="text-sm uppercase base-text tracking-wider mb-2">Items</h3>
+            <ul class="space-y-1 ml-2">
+                <li><a href="/wiki-items" class="block py-1 link-text" click.trigger="closeSidebar()">Overview</a></li>
+                <li><a href="/wiki-items/gems" class="block py-1 link-text" click.trigger="closeSidebar()">Gems</a></li>
+                <li><a href="/wiki-items/orbs" class="block py-1 link-text" click.trigger="closeSidebar()">Orbs</a></li>
+                <li><a href="/wiki-items/potions" class="block py-1 link-text" click.trigger="closeSidebar()">Potions</a></li>
+                <li><a href="/wiki-items/keys" class="block py-1 link-text" click.trigger="closeSidebar()">Keys</a></li>
+                <li><a href="/wiki-items/charms" class="block py-1 link-text" click.trigger="closeSidebar()">Charms</a></li>
+                <li><a href="/wiki-items/runes" class="block py-1 link-text" click.trigger="closeSidebar()">Runes</a></li>
+                <li><a href="/wiki-items/loottable" class="block py-1 link-text" click.trigger="closeSidebar()">Loot Table</a></li>
+            </ul>
+        </div>
+
+        <!-- Guides -->
+        <div>
+            <h3 class="text-sm uppercase base-text tracking-wider mb-2">Guides</h3>
+            <ul class="space-y-1 ml-2">
+                <li><a href="/guides/new-player-guide" class="block py-1 link-text" click.trigger="closeSidebar()">New Player Guide</a></li>
+                <li><a href="/guides/installs" class="block py-1 link-text" click.trigger="closeSidebar()">Installation</a></li>
+                <li><a href="/guides/updating-the-mod" class="block py-1 link-text" click.trigger="closeSidebar()">Updating the Mod</a></li>
+                <li><a href="/guides/quality-upgrading" class="block py-1 link-text" click.trigger="closeSidebar()">Quality Upgrading</a></li>
+                <li><a href="/guides/create-build" class="block py-1 link-text" click.trigger="closeSidebar()">Create a Build</a></li>
+            </ul>
+        </div>
+
+        <!-- Recipes -->
+        <div>
+            <h3 class="text-sm uppercase base-text tracking-wider mb-2">Recipes &amp; Crafting</h3>
+            <ul class="space-y-1 ml-2">
+                <li><a href="/recipes" class="block py-1 link-text" click.trigger="closeSidebar()">Overview</a></li>
+                <li><a href="/recipes/crafting" class="block py-1 link-text" click.trigger="closeSidebar()">Crafting</a></li>
+                <li><a href="/recipes/cube-recipes" class="block py-1 link-text" click.trigger="closeSidebar()">Cube Recipes</a></li>
+                <li><a href="/recipes/iscstat-limits" class="block py-1 link-text" click.trigger="closeSidebar()">ISC Stat Limits</a></li>
+                <li><a href="/recipes/item-enchants" class="block py-1 link-text" click.trigger="closeSidebar()">Item Enchants</a></li>
+            </ul>
+        </div>
+
+        <!-- Patch Notes -->
+        <div>
+            <h3 class="text-sm uppercase base-text tracking-wider mb-2">Patch Notes</h3>
+            <ul class="space-y-1 ml-2">
+                <li><a href="/patch-notes" class="block py-1 link-text" click.trigger="closeSidebar()">All Patch Notes</a></li>
+            </ul>
+        </div>
+
+        <!-- Reference -->
+        <div>
+            <h3 class="text-sm uppercase base-text tracking-wider mb-2">Reference</h3>
+            <ul class="space-y-1 ml-2">
+                <li><a href="/area-levels" class="block py-1 link-text" click.trigger="closeSidebar()">Area Levels</a></li>
+                <li><a href="/hirelings" class="block py-1 link-text" click.trigger="closeSidebar()">Hirelings</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 
 <!-- Nav Bar Spacer -->
 <div class="h-16"></div>

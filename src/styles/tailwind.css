@@ -394,3 +394,89 @@
 .rarity-text {
     color: #63c7ef;
 }
+
+/* Wiki content body styles */
+.wiki-body {
+  @apply text-base leading-relaxed;
+
+  h1 { @apply text-2xl unique-text mt-6 mb-3; }
+  h2 { @apply text-xl unique-text mt-5 mb-2; }
+  h3 { @apply text-lg unique-text mt-4 mb-2; }
+  h4 { @apply text-base unique-text mt-3 mb-1; }
+  h5, h6 { @apply text-base unique-text mt-2 mb-1; }
+
+  p { @apply mb-3; }
+
+  a { @apply text-gray-50 underline; }
+  a:hover { @apply unique-text; }
+
+  ul { @apply list-disc list-inside mb-3 ml-4; }
+  ol { @apply list-decimal list-inside mb-3 ml-4; }
+  li { @apply mb-1; }
+
+  img {
+    @apply max-w-full h-auto rounded-lg my-3 mx-auto block;
+  }
+
+  figure {
+    @apply my-4 text-center;
+  }
+
+  figcaption {
+    @apply text-sm base-text mt-1;
+  }
+
+  table {
+    @apply w-full border-collapse my-4;
+  }
+
+  th {
+    @apply bg-gray-700 border border-gray-600 px-3 py-2 text-left type-text;
+  }
+
+  td {
+    @apply border border-gray-600 px-3 py-2 bg-gray-800;
+  }
+
+  tr:hover td {
+    @apply bg-gray-700;
+  }
+
+  blockquote {
+    @apply border-l-4 border-gray-600 pl-4 my-3 italic base-text;
+  }
+
+  code {
+    @apply bg-gray-700 px-1 py-0.5 rounded text-sm;
+  }
+
+  pre {
+    @apply bg-gray-900 border border-gray-600 rounded-lg p-4 overflow-x-auto my-4;
+  }
+
+  pre code {
+    @apply bg-transparent p-0;
+  }
+
+  hr {
+    @apply border-gray-600 my-6;
+  }
+
+  mark {
+    @apply bg-transparent;
+    color: inherit;
+  }
+
+  /* CKEditor pen-color marker classes */
+  mark.pen-red { color: #e84a4a; }
+  mark.pen-green { color: #4cc238; }
+  mark.pen-blue { color: #63c7ef; }
+  mark.pen-yellow { color: #ffee00; }
+  mark.pen-orange { color: #e67e22; }
+  mark.pen-purple { color: #9400ab; }
+}
+
+/* Wiki TOC indentation by heading level */
+.toc-item-1 { padding-left: 0; }
+.toc-item-2 { padding-left: 1rem; }
+.toc-item-3 { padding-left: 2rem; }

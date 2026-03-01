@@ -1,0 +1,16 @@
+<template>
+    <div class="container mx-auto mt-5 max-w-5xl p-5">
+        <h1 class="text-2xl unique-text text-center mb-6">Community Builds</h1>
+        <div repeat.for="cls of classes" class="mb-6">
+            <h2 class="text-xl unique-text mb-3">${cls.label}</h2>
+            <div if.bind="cls.builds.length === 0" class="base-text ml-4">No builds yet.</div>
+            <ul if.bind="cls.builds.length > 0" class="list-disc list-inside ml-4">
+                <li repeat.for="build of cls.builds" class="mb-1">
+                    <a load="/builds/${cls.slug}/${build.slug}" class="link-text text-lg">
+                        ${build.title || build.slug}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>

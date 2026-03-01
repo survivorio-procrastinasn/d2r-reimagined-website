@@ -1,0 +1,16 @@
+<template>
+    <div class="container mx-auto mt-5 max-w-5xl p-5">
+        <h1 class="text-2xl unique-text text-center mb-6">Class Changes</h1>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+            <a repeat.for="cls of classLinks"
+               load="/classes/${cls.slug}"
+               class="block text-center p-4 bg-gray-800 border border-gray-600 rounded-lg link-text text-lg hover:bg-gray-700">
+                ${cls.label}
+            </a>
+        </div>
+        <wiki-content if.bind="classChanges"
+                      title=""
+                      content.bind="classChanges.content">
+        </wiki-content>
+    </div>
+</template>
