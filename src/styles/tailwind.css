@@ -399,6 +399,8 @@
 .wiki-body {
   @apply text-base leading-relaxed;
 
+  h1, h2, h3, h4, h5, h6 { scroll-margin-top: 5rem; }
+
   h1 { @apply text-2xl unique-text mt-6 mb-3; }
   h2 { @apply text-xl unique-text mt-5 mb-2; }
   h3 { @apply text-lg unique-text mt-4 mb-2; }
