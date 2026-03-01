@@ -3,8 +3,9 @@
         <h1 class="text-2xl unique-text text-center mb-6">Items</h1>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <a repeat.for="item of items"
-               load="/wiki-items/${item.slug}"
-               class="block text-center p-4 bg-gray-800 border border-gray-600 rounded-lg link-text text-lg hover:bg-gray-700">
+               href="/wiki-items/${item.slug}"
+               click.trigger="navigate(item.slug, $event)"
+               class="block text-center p-4 bg-gray-800 border border-gray-600 rounded-lg link-text text-lg hover:bg-gray-700 cursor-pointer">
                 ${item.label}
             </a>
         </div>

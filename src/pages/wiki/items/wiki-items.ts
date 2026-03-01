@@ -1,3 +1,6 @@
+import { IRouter } from '@aurelia/router';
+import { resolve } from 'aurelia';
+
 const itemList = [
   { slug: 'gems', label: 'Gems' },
   { slug: 'orbs', label: 'Orbs' },
@@ -10,4 +13,10 @@ const itemList = [
 
 export class WikiItems {
   items = itemList;
+  private router: IRouter = resolve(IRouter);
+
+  navigate(slug: string, event: Event) {
+    event.preventDefault();
+    this.router.load(`/wiki-items/${slug}`);
+  }
 }
